@@ -1,0 +1,73 @@
+//After Setup Theme
+add_action('after_setup_theme', 'after_setup_meteor');
+function after_setup_meteor(){
+	
+	
+	//Theme support Title Tag
+	add_theme_support('title-tag');
+	
+	//Load theme textdomain
+	load_theme_textdomain( 'meteor', get_template_directory_uri().'/languages' );
+	
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+	
+	//Enable support for Post Thumbnails on posts and pages.
+	add_theme_support( 'post-thumbnails' );
+	
+	// Blog Image Size
+	add_image_size('blog-img', 570, 470);
+	
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+	
+	/*
+	 * Enable support for Post Formats.
+	 *
+	 * See: https://codex.wordpress.org/Post_Formats
+	 */
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+		'gallery',
+		'audio',
+	) );
+	
+	// Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(        
+        'header-text' => array( 'site-title', 'site-description' ),
+    ) );
+	
+	
+	//Add Custom Header Image
+	add_theme_support('custom-header');
+	
+	//Add Custom Background Image
+	add_theme_support('custom-background');
+	
+	//Register Menus for Meteor
+	register_nav_menus(array(
+		'main-menu'		=> __('Main Menu', 'meteor'),
+	));
+	
+	
+	//Fallback Menu
+	function default_meteor_menu(){
+	echo '<ul class="nav navbar-nav">';
+			echo '<li><a href="'.home_url().'/wp-admin/nav-menus.php ?>"> Create Menu</a></li>';
+	echo '</ul>';
+	
+	}
+	
+}
